@@ -6,8 +6,7 @@
     <script src="~/lib/layui/layui.js"></script>
 </head>
 <body>
-    <center><h1>@ViewData["PageTitle"]</h1></center>
-    @{ var student = ViewData["Student"] as Student; }
+    <center><h1>@ViewBag.PageTitle</h1></center>
     <table class="layui-table">
         <colgroup>
             <col width="150">
@@ -25,10 +24,10 @@
         </thead>
         <tbody>
             <tr>
-                <td>@student.Id</td>
-                <td>@student.Name</td>
-                <td>@student.Major</td>
-                <td>@student.Email</td>
+                <td>@ViewBag.Student.Id</td>
+                <td>@ViewBag.Student.Name</td>
+                <td>@ViewBag.Student.Major</td>
+                <td>@ViewBag.Student.Email</td>
             </tr>
         </tbody>
     </table>

@@ -45,8 +45,9 @@ namespace MockSchoolManagement.Areas.Business.Controllers
         {
             Student student = _studentRepository.GetStudent(id);
             //使用ViewData将PageTitle和Student模型传递给View
-            ViewData["PageTitle"] = "Student Details";
-            ViewData["Student"] = student;
+            //使用动态属性PageTitle和Student
+            ViewBag.PageTitle = "学生详情";
+            ViewBag.Student = student;
             return View();
         }
         #endregion
