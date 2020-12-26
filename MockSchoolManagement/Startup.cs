@@ -35,23 +35,26 @@ namespace MockSchoolManagement
                 app.UseDeveloperExceptionPage();
             }
 
-            app.Use(async (context,next)=> {
-                logger.LogInformation("MW1：传入请求");
-                await next();
-                logger.LogInformation("MW1：传出请求");
-            });
+            ////将test.html指定为默认文件
+            //DefaultFilesOptions defaultFilesOptions = new DefaultFilesOptions();
+            //defaultFilesOptions.DefaultFileNames.Clear();
+            //defaultFilesOptions.DefaultFileNames.Add("test.html");
+            ////添加默认文件中间件
+            //app.UseDefaultFiles(defaultFilesOptions);
 
-            app.Use(async (context, next) => {
-                logger.LogInformation("MW2：传入请求");
-                await next();
-                logger.LogInformation("MW2：传出请求");
-            });
+            //使用UseFileServer()而不是UseDefaultFiles()和UseStaticsFiles()
+            FileServerOptions fileServerOptions = new FileServerOptions();
+            fileServerOptions.DefaultFilesOptions.DefaultFileNames.Clear();
+            fileServerOptions.DefaultFilesOptions.DefaultFileNames.Add("test.html");
+            app.UseFileServer(fileServerOptions);
+
+            //添加静态文件中间件
+            app.UseStaticFiles();
 
             app.Run(async (context) =>
             {
                 context.Response.ContentType = "text/plain;charset=utf-8";
-                await context.Response.WriteAsync("MW3：处理请求并生成响应");
-                logger.LogInformation("MW3：处理请求并生成响应");
+                await context.Response.WriteAsync("Hello World!");
             });
         }
     }
