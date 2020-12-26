@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,30 +28,30 @@ namespace MockSchoolManagement
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env,ILogger<Startup> logger)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
-            app.Run(async (context) =>
-            {
-                //防止乱码
-                context.Response.ContentType = "text/plain;charset=utf-8";
-                //注入后通过_configuration访问MyKey
-                await context.Response.WriteAsync(_configuration["MyKey"]);
+            app.Use(async (context,next)=> {
+                logger.LogInformation("MW1：传入请求");
+                await next();
+                logger.LogInformation("MW1：传出请求");
             });
 
-            app.UseRouting();
+            app.Use(async (context, next) => {
+                logger.LogInformation("MW2：传入请求");
+                await next();
+                logger.LogInformation("MW2：传出请求");
+            });
 
-            app.UseEndpoints(endpoints =>
+            app.Run(async (context) =>
             {
-                endpoints.MapGet("/", async context =>
-                {
-                    var processname = System.Diagnostics.Process.GetCurrentProcess().ProcessName;
-                    await context.Response.WriteAsync(processname);
-                });
+                context.Response.ContentType = "text/plain;charset=utf-8";
+                await context.Response.WriteAsync("MW3：处理请求并生成响应");
+                logger.LogInformation("MW3：处理请求并生成响应");
             });
         }
     }
