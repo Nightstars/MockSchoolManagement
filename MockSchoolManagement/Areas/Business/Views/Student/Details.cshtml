@@ -1,4 +1,4 @@
-﻿@using MockSchoolManagement.Areas.Business.Models
+﻿@model MockSchoolManagement.Areas.Business.ViewModels.StudentDetailsViewModel
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>学生详情页面</title>
@@ -6,7 +6,7 @@
     <script src="~/lib/layui/layui.js"></script>
 </head>
 <body>
-    <center><h1>@ViewBag.PageTitle</h1></center>
+    <center><h1>@Model.PageTitle</h1></center>
     <table class="layui-table">
         <colgroup>
             <col width="150">
@@ -24,10 +24,10 @@
         </thead>
         <tbody>
             <tr>
-                <td>@ViewBag.Student.Id</td>
-                <td>@ViewBag.Student.Name</td>
-                <td>@ViewBag.Student.Major</td>
-                <td>@ViewBag.Student.Email</td>
+                <td>@Model.student.Id</td>
+                <td>@Model.student.Name</td>
+                <td>@Model.student.Major</td>
+                <td>@Model.student.Email</td>
             </tr>
         </tbody>
     </table>

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MockSchoolManagement.Areas.Business.Data;
 using MockSchoolManagement.Areas.Business.Models;
+using MockSchoolManagement.Areas.Business.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +32,10 @@ namespace MockSchoolManagement.Areas.Business.Controllers
         /// <returns></returns>
         public IActionResult Index()
         {
-            return View();
+            //查询所有学生信息
+            var model = _studentRepository.GetAllStudents();
+            //将学生信息传递给View方法
+            return View(model);
         }
         #endregion
 
@@ -44,11 +48,13 @@ namespace MockSchoolManagement.Areas.Business.Controllers
         public IActionResult Details(int id)
         {
             Student student = _studentRepository.GetStudent(id);
-            //使用ViewData将PageTitle和Student模型传递给View
-            //使用动态属性PageTitle和Student
-            ViewBag.PageTitle = "学生详情";
-            ViewBag.Student = student;
-            return View();
+            //实例化StudentDetailsViewModel并存储Stuent详细信息和PageTitle
+            StudentDetailsViewModel studentDetailsViewModel = new StudentDetailsViewModel
+            {
+                student = student,
+                PageTitle= "学生详情"
+            };
+            return View(studentDetailsViewModel);
         }
         #endregion
     }

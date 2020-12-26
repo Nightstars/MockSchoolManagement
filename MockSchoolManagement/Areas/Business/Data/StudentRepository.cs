@@ -38,14 +38,39 @@ namespace MockSchoolManagement.Areas.Business.Data
             };
         }
         #endregion
+
+        #region GetStudent
+        /// <summary>
+        /// GetStudent
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Student GetStudent(int id)
         {
             return _studentList.FirstOrDefault(s => s.Id == id);
         }
+        #endregion
 
+        #region Save
+        /// <summary>
+        /// Save
+        /// </summary>
+        /// <param name="student"></param>
         public void Save(Student student)
         {
             throw new NotImplementedException();
         }
+        #endregion
+
+        #region GetAllStudents
+        /// <summary>
+        /// GetAllStudents
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<Student> GetAllStudents()
+        {
+            return _studentList;
+        }
+        #endregion
     }
 }

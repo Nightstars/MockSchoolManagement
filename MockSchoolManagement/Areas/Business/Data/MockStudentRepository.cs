@@ -61,5 +61,16 @@ namespace MockSchoolManagement.Areas.Business.Data
             throw new NotImplementedException();
         }
         #endregion
+
+        #region GetAllStudents
+        /// <summary>
+        /// GetAllStudents
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<Student> GetAllStudents()
+        {
+            return _studentList;
+        }
+        #endregion
     }
 }

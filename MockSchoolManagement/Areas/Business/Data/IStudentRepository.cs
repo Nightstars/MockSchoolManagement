@@ -10,5 +10,6 @@ namespace MockSchoolManagement.Areas.Business.Data
     {
         Student GetStudent(int id);
         void Save(Student student);
+        IEnumerable<Student> GetAllStudents();
     }
 }
