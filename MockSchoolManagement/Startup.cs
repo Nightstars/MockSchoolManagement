@@ -32,7 +32,11 @@ namespace MockSchoolManagement
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                DeveloperExceptionPageOptions developerExceptionPageOptions = new DeveloperExceptionPageOptions
+                {
+                    SourceCodeLineCount = 3
+                };
+                app.UseDeveloperExceptionPage(developerExceptionPageOptions);
             }
 
             ////将test.html指定为默认文件
@@ -43,18 +47,19 @@ namespace MockSchoolManagement
             //app.UseDefaultFiles(defaultFilesOptions);
 
             //使用UseFileServer()而不是UseDefaultFiles()和UseStaticsFiles()
-            FileServerOptions fileServerOptions = new FileServerOptions();
-            fileServerOptions.DefaultFilesOptions.DefaultFileNames.Clear();
-            fileServerOptions.DefaultFilesOptions.DefaultFileNames.Add("test.html");
-            app.UseFileServer(fileServerOptions);
+            //FileServerOptions fileServerOptions = new FileServerOptions();
+            //fileServerOptions.DefaultFilesOptions.DefaultFileNames.Clear();
+            //fileServerOptions.DefaultFilesOptions.DefaultFileNames.Add("test.html");
+            //app.UseFileServer(fileServerOptions);
 
             //添加静态文件中间件
             app.UseStaticFiles();
 
             app.Run(async (context) =>
             {
+                //throw new Exception("请求管道中发生了一些异常，请检查。");
                 context.Response.ContentType = "text/plain;charset=utf-8";
-                await context.Response.WriteAsync("Hello World!");
+                await context.Response.WriteAsync("Hosting Enviroment："+env.EnvironmentName);
             });
         }
     }
