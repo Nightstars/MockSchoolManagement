@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace MockSchoolManagement.Areas.Business.Data
 {
-    public class StudentRepository : IStudentRepository
+    public class MockStudentRepository : IStudentRepository
     {
         #region inisialize
         private List<Student> _studentList;
-        public StudentRepository()
+        public MockStudentRepository()
         {
             _studentList = new List<Student>
             {
@@ -38,14 +38,28 @@ namespace MockSchoolManagement.Areas.Business.Data
             };
         }
         #endregion
+
+        #region GetStudent
+        /// <summary>
+        /// GetStudent
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Student GetStudent(int id)
         {
             return _studentList.FirstOrDefault(s => s.Id == id);
         }
+        #endregion
 
+        #region Save
+        /// <summary>
+        /// Save
+        /// </summary>
+        /// <param name="student"></param>
         public void Save(Student student)
         {
             throw new NotImplementedException();
         }
+        #endregion
     }
 }

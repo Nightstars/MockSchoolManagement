@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using MockSchoolManagement.Areas.Business.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,8 +26,9 @@ namespace MockSchoolManagement
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddMvc(a => a.EnableEndpointRouting = false);
-            services.AddControllersWithViews(a => a.EnableEndpointRouting = false);
+            services.AddMvc(x=>x.EnableEndpointRouting=false)
+                .AddXmlSerializerFormatters();
+            services.AddSingleton<IStudentRepository, MockStudentRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +47,7 @@ namespace MockSchoolManagement
             //添加静态文件中间件
             app.UseStaticFiles();
 
+            //app.UseRouting();
             app.UseMvcWithDefaultRoute();
 
             app.Run(async (context) =>
@@ -53,6 +56,13 @@ namespace MockSchoolManagement
                 context.Response.ContentType = "text/plain;charset=utf-8";
                 await context.Response.WriteAsync("Hello World");
             });
+
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapControllerRoute(
+            //       name: "default",
+            //       pattern: "{controller=Home}/{action=Index}/{id?}");
+            //});
         }
     }
 }

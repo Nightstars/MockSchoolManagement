@@ -8,10 +8,12 @@ using System.Threading.Tasks;
 
 namespace MockSchoolManagement.Areas.Business.Controllers
 {
+    [Area("Business")]
+    [Route("[controller]/[action]")]
     public class StudentController : Controller
     {
         #region initialize
-        private IStudentRepository _studentRepository;
+        private readonly IStudentRepository _studentRepository;
         /// <summary>
         /// StudentController
         /// </summary>
@@ -41,13 +43,11 @@ namespace MockSchoolManagement.Areas.Business.Controllers
         /// <returns></returns>
         public IActionResult Details(int id)
         {
-            Student student = new Student
-            {
-                Id=1,
-                Name="张三",
-                Major="计算机"
-            };
-            return View(student);
+            Student student = _studentRepository.GetStudent(id);
+            //使用ViewData将PageTitle和Student模型传递给View
+            ViewData["PageTitle"] = "Student Details";
+            ViewData["Student"] = student;
+            return View();
         }
         #endregion
     }
