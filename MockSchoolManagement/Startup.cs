@@ -25,6 +25,8 @@ namespace MockSchoolManagement
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddMvc(a => a.EnableEndpointRouting = false);
+            services.AddControllersWithViews(a => a.EnableEndpointRouting = false);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,27 +41,17 @@ namespace MockSchoolManagement
                 app.UseDeveloperExceptionPage(developerExceptionPageOptions);
             }
 
-            ////将test.html指定为默认文件
-            //DefaultFilesOptions defaultFilesOptions = new DefaultFilesOptions();
-            //defaultFilesOptions.DefaultFileNames.Clear();
-            //defaultFilesOptions.DefaultFileNames.Add("test.html");
-            ////添加默认文件中间件
-            //app.UseDefaultFiles(defaultFilesOptions);
-
-            //使用UseFileServer()而不是UseDefaultFiles()和UseStaticsFiles()
-            //FileServerOptions fileServerOptions = new FileServerOptions();
-            //fileServerOptions.DefaultFilesOptions.DefaultFileNames.Clear();
-            //fileServerOptions.DefaultFilesOptions.DefaultFileNames.Add("test.html");
-            //app.UseFileServer(fileServerOptions);
 
             //添加静态文件中间件
             app.UseStaticFiles();
+
+            app.UseMvcWithDefaultRoute();
 
             app.Run(async (context) =>
             {
                 //throw new Exception("请求管道中发生了一些异常，请检查。");
                 context.Response.ContentType = "text/plain;charset=utf-8";
-                await context.Response.WriteAsync("Hosting Enviroment："+env.EnvironmentName);
+                await context.Response.WriteAsync("Hello World");
             });
         }
     }

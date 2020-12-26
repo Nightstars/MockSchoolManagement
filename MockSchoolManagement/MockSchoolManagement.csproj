@@ -5,4 +5,8 @@
     <UserSecretsId>de6516c6-ed8c-4ad7-95d3-9019bf322131</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.1" />
+  </ItemGroup>
+
 </Project>
