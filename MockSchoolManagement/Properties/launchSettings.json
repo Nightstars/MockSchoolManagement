@@ -1,4 +1,4 @@
-﻿{
+{
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
@@ -17,13 +17,14 @@
     },
     "MockSchoolManagement": {
       "commandName": "Project",
-      "dotnetRunMessages": "true",
       "launchBrowser": true,
-      "applicationUrl": "http://localhost:5000",
+      "launchUrl": "Home/Index",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "MyKey": "launchsettings.json中MyKey的值"
-      }
+        "MyKey": "launchsettings.json中MyKey的值",
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "dotnetRunMessages": "true",
+      "applicationUrl": "http://localhost:5000"
     }
   }
 }

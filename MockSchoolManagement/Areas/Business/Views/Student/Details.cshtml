@@ -1,35 +1,30 @@
 ﻿@model MockSchoolManagement.Areas.Business.ViewModels.StudentDetailsViewModel
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title>学生详情页面</title>
-    <link rel="stylesheet" href="~/lib/layui/css/layui.css">
-    <script src="~/lib/layui/layui.js"></script>
-</head>
-<body>
-    <center><h1>@Model.PageTitle</h1></center>
-    <table class="layui-table">
-        <colgroup>
-            <col width="150">
-            <col width="200">
-            <col width="200">
-            <col>
-        </colgroup>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>名字</th>
-                <th>主修科目</th>
-                <th>邮箱</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>@Model.student.Id</td>
-                <td>@Model.student.Name</td>
-                <td>@Model.student.Major</td>
-                <td>@Model.student.Email</td>
-            </tr>
-        </tbody>
-    </table>
-</body>
-</html>
+@{ 
+    ViewBag.Title = "学生详情";
+    ViewBag.cur = 2;
+}
+<center><h1>@Model.PageTitle</h1></center>
+<table class="layui-table">
+    <colgroup>
+        <col width="150">
+        <col width="200">
+        <col width="200">
+        <col>
+    </colgroup>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>名字</th>
+            <th>主修科目</th>
+            <th>邮箱</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.student.Id</td>
+            <td>@Model.student.Name</td>
+            <td>@Model.student.Major</td>
+            <td>@Model.student.Email</td>
+        </tr>
+    </tbody>
+</table>

@@ -20,9 +20,9 @@ namespace MockSchoolManagement.Controllers
         /// Index
         /// </summary>
         /// <returns></returns>
-        public string Index()
+        public IActionResult Index()
         {
-            return "Hello from MVC";
+            return View();
         }
         #endregion
     }

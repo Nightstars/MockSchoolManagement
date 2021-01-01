@@ -1,37 +1,32 @@
 ﻿@model IEnumerable<MockSchoolManagement.Areas.Business.Models.Student>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>学生信息页面</title>
-        <link rel="stylesheet" href="~/lib/layui/css/layui.css">
-        <script src="~/lib/layui/layui.js"></script>
-    </head>
-    <body>
-        <table class="layui-table">
-            <colgroup>
-                <col width="150">
-                <col width="200">
-                <col width="200">
-                <col>
-            </colgroup>
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>名字</th>
-                    <th>邮箱</th>
-                    <th>主修科目</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var student in Model)
-                {
-                    <tr>
-                        <td>@student.Id</td>
-                        <td>@student.Name</td>
-                        <td>@student.Email</td>
-                        <td>@student.Major</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </body>
-</html>
+@{ 
+    ViewBag.Title = "学生列表";
+    ViewBag.cur = 2;
+}
+<table class="layui-table">
+    <colgroup>
+        <col width="150">
+        <col width="200">
+        <col width="200">
+        <col>
+    </colgroup>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>名字</th>
+            <th>邮箱</th>
+            <th>主修科目</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>@student.Id</td>
+                <td>@student.Name</td>
+                <td>@student.Email</td>
+                <td>@student.Major</td>
+            </tr>
+        }
+    </tbody>
+</table>
