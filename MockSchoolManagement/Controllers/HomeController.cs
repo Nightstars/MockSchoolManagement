@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MockSchoolManagement.Controllers
 {
-    [Route("[controller]/[action]")]
+    //[Route("[controller]/[action]")]
     public class HomeController : Controller
     {
         #region initialize
@@ -20,6 +20,11 @@ namespace MockSchoolManagement.Controllers
         /// Index
         /// </summary>
         /// <returns></returns>
+        //[Route("/")]
+        //[Route("")]
+        //[Route("Home")]
+        //[Route("Home/Index")]
+        //[Route("[action]")]
         public IActionResult Index()
         {
             return View();

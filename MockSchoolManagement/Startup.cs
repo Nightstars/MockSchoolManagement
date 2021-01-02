@@ -26,7 +26,7 @@ namespace MockSchoolManagement
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc()
+            services.AddControllersWithViews()
                 .AddXmlSerializerFormatters();
             services.AddSingleton<IStudentRepository, MockStudentRepository>();
         }
@@ -47,9 +47,19 @@ namespace MockSchoolManagement
             //添加静态文件中间件
             app.UseStaticFiles();
 
-            app.UseRouting();
+            //app.UseMvc();
+
+            //app.UseMvc(routes =>
+            //{
+            //    routes.MapRoute(
+            //        name: "default",
+            //        template: "{controller=Home}/{action=Index}/{id?}"
+            //    );
+            //});
+
             //app.UseMvcWithDefaultRoute();
 
+            app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {

@@ -18,13 +18,12 @@
     "MockSchoolManagement": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "Home/Index",
       "environmentVariables": {
         "MyKey": "launchsettings.json中MyKey的值",
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "dotnetRunMessages": "true",
-      "applicationUrl": "http://localhost:5000"
+      "applicationUrl": "http://localhost:5000/"
     }
   }
 }

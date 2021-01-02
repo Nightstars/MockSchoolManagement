@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 namespace MockSchoolManagement.Areas.Business.Controllers
 {
     [Area("Business")]
-    [Route("[controller]/[action]")]
     public class StudentController : Controller
     {
         #region initialize
@@ -45,6 +44,7 @@ namespace MockSchoolManagement.Areas.Business.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [Route("Student/Details/{id?}")]
         public IActionResult Details(int id)
         {
             Student student = _studentRepository.GetStudent(id);
