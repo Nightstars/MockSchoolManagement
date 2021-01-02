@@ -5,32 +5,17 @@
         <meta name="viewport" content="width=device-width" />
         <title>@ViewBag.Title</title>
         <link rel="stylesheet" href="~/lib/layui/css/layui.css">
+        <link rel="stylesheet" href="~/css/site.css">
     </head>
     <body>
         <div class="layui-bg-green" style="height:50px;">
-            <div class="logo-left" style="text-align:center">
-                @*<img style="width:36px;height:36px" src="/images/logos/logo.png">*@
-                <span>校园管理平台</span>
-            </div>
-            <div class="bar-right">
-                
+            <div class="text-center">
+                <span class="title">校园管理平台</span>
             </div>
         </div>
         <div>
             @RenderBody()
         </div>
         <script src="~/lib/layui/layui.js"></script>
-        <script>
-            layui.use(['element', 'layer'], function () {
-                var $ = layui.$;
-                var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
-                var active = {
-                    init: function () {
-                        $("#home").addClass("layui-this")
-                    }
-                }
-            });
-            active.init()
-        </script>
     </body>
 </html>

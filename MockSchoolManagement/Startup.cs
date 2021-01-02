@@ -47,18 +47,6 @@ namespace MockSchoolManagement
             //添加静态文件中间件
             app.UseStaticFiles();
 
-            //app.UseMvc();
-
-            //app.UseMvc(routes =>
-            //{
-            //    routes.MapRoute(
-            //        name: "default",
-            //        template: "{controller=Home}/{action=Index}/{id?}"
-            //    );
-            //});
-
-            //app.UseMvcWithDefaultRoute();
-
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
