@@ -5,6 +5,7 @@
 }
 <table class="layui-table">
     <colgroup>
+        <col width="100">
         <col width="150">
         <col width="200">
         <col width="200">
@@ -12,6 +13,7 @@
     </colgroup>
     <thead>
         <tr>
+            <th>序号</th>
             <th>Id</th>
             <th>名字</th>
             <th>邮箱</th>
@@ -22,6 +24,7 @@
         @foreach (var student in Model)
         {
             <tr>
+                <td>@student.Id</td>
                 <td>@student.Id</td>
                 <td>@student.Name</td>
                 <td>@student.Email</td>

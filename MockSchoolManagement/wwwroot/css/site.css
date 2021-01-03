@@ -9,3 +9,19 @@
     text-align:center;
     line-height:50px;
 }
+
+.flex{
+    display:flex;
+    flex-direction:row;
+}
+
+.list-title{
+    width:7%;
+}
+
+.list-body{
+    width:93%;
+    margin-left:20px;
+    padding-left:18px;
+    padding-right:18px;
+}
