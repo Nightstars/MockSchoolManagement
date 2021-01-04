@@ -15,29 +15,16 @@
         </div>
         <div class="flex">
             <div class="list-title">
-                <ul class="layui-nav layui-nav-tree" lay-filter="test">
-                    <!-- 侧边导航: <ul class="layui-nav layui-nav-tree layui-nav-side"> -->
-                    <li class="layui-nav-item">
-                        <a href="javascript:;">学生管理</a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="/Student/Index">学生信息</a></dd>
-                        </dl>
-                    </li>
-                </ul>
+                <a href="/Student/Index">
+                    <div style="width:100%;height:40px;background:#5FB878;text-align:center;color:white;line-height:40px;">
+                        学生管理
+                    </div>
+                </a>
             </div>
             <div class="list-body">
                 @RenderBody()
             </div>
         </div>
         <script src="~/lib/layui/layui.js"></script>
-        <script>
-            //注意：导航 依赖 element 模块，否则无法进行功能性操作
-            layui.use('element', function () {
-                var element = layui.element;
-
-                //…
-            });
-        </script>
-
     </body>
 </html>

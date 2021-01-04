@@ -15,8 +15,8 @@
     flex-direction:row;
 }
 
-.list-title{
-    width:7%;
+.list-title {
+    width: 7%;
 }
 
 .list-body{
@@ -24,4 +24,11 @@
     margin-left:20px;
     padding-left:18px;
     padding-right:18px;
+}
+
+.nav-item{
+    width: 100%;
+    height: 30px;
+    background: red;
+    text-align: center;
 }
