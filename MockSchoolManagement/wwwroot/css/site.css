@@ -32,3 +32,15 @@
     background: red;
     text-align: center;
 }
+
+.bg-green{
+    background: #009688;
+}
+
+.menu-item-border{
+    border:1px solid white;
+}
+
+.conner-round{
+    border-radius:5px;
+}

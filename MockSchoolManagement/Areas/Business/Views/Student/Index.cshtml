@@ -1,7 +1,6 @@
 ﻿@model IEnumerable<MockSchoolManagement.Areas.Business.Models.Student>
-@{ 
+@{
     ViewBag.Title = "学生列表";
-    ViewBag.cur = 2;
 }
 <table class="layui-table">
     <colgroup>
@@ -33,3 +32,37 @@
         }
     </tbody>
 </table>
+
+<table class="layui-table" lay-data="{height:315, url:'GetstuList', page:true, id:'test'}" lay-filter="test">
+    <thead>
+        <tr>
+            <th lay-data="{field:'id', width:100}">ID</th>
+            <th lay-data="{field:'username', width:100}">名字</th>
+            <th lay-data="{field:'sex', width:180, sort: true}">邮箱</th>
+            <th lay-data="{field:'city', width:200}">主修科目</th>
+        </tr>
+    </thead>
+</table>
+
+<table id="demo" lay-filter="test"></table>
+<script>
+layui.use('table', function(){
+  var table = layui.table;
+
+  //第一个实例
+  table.render({
+    elem: '#demo'
+    ,height: 312
+      , url: 'GetstuList' //数据接口
+    ,page: true //开启分页
+    ,cols: [[ //表头
+      {type:'numbers', title: '序号', width:50, fixed: 'left'}
+      ,{field: 'id', title: 'Id', width:100}
+      ,{field: '', title: '名字', width:100, sort: true}
+      ,{field: 'city', title: '邮箱', width:180}
+      ,{ field: 'sign', title: '主修科目', width: 200,sort: true}
+    ]]
+  });
+
+});
+</script>

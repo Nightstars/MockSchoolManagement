@@ -39,6 +39,13 @@ namespace MockSchoolManagement.Areas.Business.Controllers
         }
         #endregion
 
+        #region GetstuList
+        public IActionResult GetstuList()
+        {
+            return Json(_studentRepository.GetAllStudents());
+        }
+        #endregion
+
         #region Details
         /// <summary>
         /// Details
